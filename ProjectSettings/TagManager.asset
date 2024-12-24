@@ -3,17 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Obstructor
+  - Interactable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Actors
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Floor
+  - Walls
+  - Player
   - 
   - 
   - 
@@ -40,4 +42,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Floors
+    uniqueID: 1658972517
+    locked: 0
+  - name: Walls
+    uniqueID: 2461651873
+    locked: 0
+  - name: Actors
+    uniqueID: 318756407
+    locked: 0
+  - name: Effects
+    uniqueID: 3949078345
     locked: 0
