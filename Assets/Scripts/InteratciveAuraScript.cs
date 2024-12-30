@@ -8,7 +8,6 @@ public class InteratciveAuraScript : MonoBehaviour
 {
     public int holdSec;
     public float ObsSpeed;
-    public LayerMask wallLayer;
 
     [SerializeField]
     private CircleCollider2D interactRadius;
@@ -40,12 +39,7 @@ public class InteratciveAuraScript : MonoBehaviour
     {
         if (collision.tag == "Interactable")
         {
-            //LayerMask layerMask = LayerMask.
-            Vector2 direction = new Vector2(transform.position.x - collision.transform.position.x, transform.position.y - collision.transform.position.y);
-            if (!Physics2D.Raycast(gameObject.transform.position, direction, interactRadius.radius, wallLayer))
-            {
-                collision.gameObject.GetComponent<InteractibleObjectScript>().WithinRange();
-            }
+            collision.gameObject.GetComponent<InteractibleObjectScript>().WithinRange();
         }
     }
 }

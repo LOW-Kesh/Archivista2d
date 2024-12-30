@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class followCursor : MonoBehaviour
 {
-    private void Update()
+    private void FixedUpdate()
     {
         gameObject.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
