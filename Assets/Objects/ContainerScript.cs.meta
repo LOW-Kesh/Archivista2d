@@ -3,7 +3,9 @@ guid: 6d1772c9261e4e6418767fc099ba927e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - interactRadiusCollider: {instanceID: 0}
+  - containerMenu: {fileID: 3253106684260262987, guid: 89e8f9143c0fc5d4bb1fdc4eebf29821, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
