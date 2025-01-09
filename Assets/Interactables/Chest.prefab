@@ -82,8 +82,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadiusCollider: {fileID: 4336094905088838663}
   containerOpen: 0
-  LootList:
+  LootTypeList:
   - {fileID: 8993196136161684102, guid: 420653a7f7facf04793dbc9f5316ff43, type: 3}
+  - {fileID: 8993196136161684102, guid: 230df3e8ff7a6c243954d207a078bfca, type: 3}
   containerMenu: {fileID: 0}
   lootAmountMin: 2
   lootAmountMax: 5

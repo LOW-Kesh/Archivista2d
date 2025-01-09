@@ -16,7 +16,7 @@ public class ContainerScript : MonoBehaviour
     public int lootAmountMax;
     private int lootAmount;
 
-    private bool unopened;
+    public bool unopened;
     private bool interactRange;
     //public SpriteRenderer interactIcon;
 
@@ -26,6 +26,7 @@ public class ContainerScript : MonoBehaviour
         containerOpen = false;
         unopened = true;
         lootAmount = Random.Range(lootAmountMin, lootAmountMax);
+        containerMenu = UIMenuManager.UiMenuManager.GetContainerMenu();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -51,7 +52,6 @@ public class ContainerScript : MonoBehaviour
                 {
                     unopened = false;
                     InstantiateContainerItems(lootAmount);
-                    Debug.Log("Loot instantiated for container " + gameObject.name);
                 }
                 MoveListToMenu();
                 StartCoroutine(ContToggle(true));
@@ -59,7 +59,6 @@ public class ContainerScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && containerOpen)
             {
                 containerMenu.gameObject.SetActive(false);
-                MoveListToMenu();
                 StartCoroutine(ContToggle(false));
             }
             
@@ -74,7 +73,7 @@ public class ContainerScript : MonoBehaviour
 
     private void MoveListToMenu()
     {
-        ContMenuManager.contMenuManager.SpawnItemsInCont(LootList);
+        containerMenu.GetComponent<ContMenuManager>().SpawnItemsInCont(LootList);
         Debug.Log("Items Moved");
     }
 
@@ -83,9 +82,10 @@ public class ContainerScript : MonoBehaviour
         //will determine whats in the container using some other data as a source
 
         int j = 0;
+
+        LootList = new GameObject[spawnCount];
         for (int i = 0; i < spawnCount; i++)
         {
-            LootList = new GameObject[spawnCount];
             LootList[j] = LootTypeList[Random.Range(0, LootTypeList.Length)];
             j++;
         }
