@@ -26,19 +26,14 @@ public class ContainerScript : MonoBehaviour
         containerOpen = false;
         unopened = true;
         lootAmount = Random.Range(lootAmountMin, lootAmountMax);
-        containerMenu = UIMenuManager.UiMenuManager.GetContainerMenu();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         interactRange = true;
+        containerMenu = UIMenuManager.UiMenuManager.GetContainerMenu();
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        interactRange = true;
-        containerOpen = false;
-        containerMenu.gameObject.SetActive(false);
-    }
+    
 
     private void Update()
     {
@@ -51,7 +46,7 @@ public class ContainerScript : MonoBehaviour
                 if (unopened)
                 {
                     unopened = false;
-                    InstantiateContainerItems(lootAmount);
+                    LootList = InstantiateContainerItems(lootAmount);
                 }
                 MoveListToMenu();
                 StartCoroutine(ContToggle(true));
@@ -63,6 +58,12 @@ public class ContainerScript : MonoBehaviour
             }
             
         }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        interactRange = false;
+        containerOpen = false;
+        containerMenu.gameObject.SetActive(false);
     }
 
     private IEnumerator ContToggle(bool toggle)
@@ -77,7 +78,7 @@ public class ContainerScript : MonoBehaviour
         Debug.Log("Items Moved");
     }
 
-    private void InstantiateContainerItems(int spawnCount)
+    private GameObject[] InstantiateContainerItems(int spawnCount)
     {
         //will determine whats in the container using some other data as a source
 
@@ -89,5 +90,6 @@ public class ContainerScript : MonoBehaviour
             LootList[j] = LootTypeList[Random.Range(0, LootTypeList.Length)];
             j++;
         }
+        return LootList;
     }
 }

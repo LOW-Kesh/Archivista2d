@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 1403638856207672297}
   - component: {fileID: 5796564218932643475}
   m_Layer: 5
-  m_Name: Loot PH
+  m_Name: Loot PH 1
   m_TagString: MenuItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3965359911931201057
 RectTransform:
   m_ObjectHideFlags: 0
